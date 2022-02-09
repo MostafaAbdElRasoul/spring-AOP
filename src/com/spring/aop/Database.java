@@ -8,7 +8,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class Database {
 	
-	@Before("execution(public void getPosts())")
+	//@Before("execution(void com.spring.dao.Post.getPosts())")
+	//@Before("execution(public void com.spring.dao.Post.getPosts())")
+	//@Before("execution(public void getPosts())")
+	//@Before("execution(public * getPosts())")
+	//@Before("execution(public * get*(com.spring.dao.Post))")
+	//@Before("execution(public * get*())")
+	//@Before("execution(public * get*(..))")
+	@Before("execution(public * com.spring.dao.*.*(..))")
 	public void connectionDb() {
 		System.out.println("connected");
 	}

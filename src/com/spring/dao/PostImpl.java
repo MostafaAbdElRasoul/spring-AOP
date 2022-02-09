@@ -13,4 +13,9 @@ public class PostImpl implements Post {
 		
 	}
 
+	@Override
+	public String getLikes() {
+		return "Posts likees .....";
+	}
+
 }
