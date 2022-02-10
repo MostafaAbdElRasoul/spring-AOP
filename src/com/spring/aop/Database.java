@@ -11,6 +11,10 @@ public class Database {
 	
 	@Pointcut("execution(public * com.spring.dao.*.*(..))")
 	public void myPointCut() {}
+	
+	@Pointcut("execution(public * com.spring.dao.*.getLi*())")
+	public void myGetLi() {}
+	
 	//@Before("execution(void com.spring.dao.Post.getPosts())")
 	//@Before("execution(public void com.spring.dao.Post.getPosts())")
 	//@Before("execution(public void getPosts())")
@@ -18,11 +22,11 @@ public class Database {
 	//@Before("execution(public * get*(com.spring.dao.Post))")
 	//@Before("execution(public * get*())")
 	//@Before("execution(public * get*(..))")
-	@Before("myPointCut()")
+	@Before("myPointCut() && !myGetLi()")
 	public void connectionDb() {
 		System.out.println("connected");
 	}
-	@Before("myPointCut()")
+	@Before("myPointCut() && !myGetLi()")
 	public void login() {
 		System.out.println("login success ..");
 	}
