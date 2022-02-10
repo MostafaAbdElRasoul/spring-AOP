@@ -8,9 +8,8 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-@Order(2)
-public class Database {
-	
+@Order(1)
+public class Info {
 	@Pointcut("execution(public * com.spring.dao.*.*(..))")
 	public void myPointCut() {}
 	
@@ -26,11 +25,10 @@ public class Database {
 	//@Before("execution(public * get*(..))")
 	@Before("myPointCut() && !myGetLi()")
 	public void connectionDb() {
-		System.out.println("connected from d");
+		System.out.println("connected from info");
 	}
 	@Before("myPointCut() && !myGetLi()")
 	public void login() {
-		System.out.println("login success from d");
+		System.out.println("login success .. from info");
 	}
-	
 }
